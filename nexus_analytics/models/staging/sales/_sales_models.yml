@@ -1,0 +1,56 @@
+
+version: 2
+
+models:
+  - name: stg_sales_orders
+    description: >
+      Standardized sales order data with calculated
+      gross sales, discounts, and net sales.
+
+    columns:
+      - name: order_id
+        description: "Unique sales order identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        data_tests:
+          - not_null
+
+      - name: product_id
+        data_tests:
+          - not_null
+
+      - name: order_date
+        data_tests:
+          - not_null
+
+      - name: quantity
+        data_tests:
+          - not_null
+
+      - name: net_sales_amount
+        data_tests:
+          - not_null
+
+      - name: order_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - Completed
+                  - Pending
+                  - Cancelled
+                  - Returned
+
+      - name: region
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - Northeast
+                  - Southeast
+                  - Midwest
+                  - Southwest
+                  - West

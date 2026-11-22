@@ -1,0 +1,26 @@
+# Python environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# dbt generated files
+target/
+dbt_packages/
+logs/
+*.log
+
+# Generated project data
+data/generated/
+nexus_analytics/data/generated/
+
+# Operating system files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,15 @@
+
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw source data ingested into Snowflake"
+    database: NEXUS_ANALYTICS
+    schema: RAW
+
+    tables:
+      - name: sales_orders
+        description: "Original sales order records loaded from CSV"
+        columns:
+          - name: ORDER_ID
+            description: "Unique sales order identifier"
