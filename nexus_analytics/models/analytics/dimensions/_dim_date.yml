@@ -1,0 +1,42 @@
+
+version: 2
+
+models:
+  - name: dim_date
+    description: >
+      Continuous calendar dimension covering the date range
+      represented in the sales fact table. Supports daily,
+      weekly, monthly, quarterly, and annual reporting.
+
+    columns:
+      - name: date_key
+        description: Integer date key in YYYYMMDD format.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: date_day
+        description: Calendar date.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: year
+        description: Calendar year.
+        data_tests:
+          - not_null
+
+      - name: month_number
+        description: Numeric calendar month from 1 to 12.
+        data_tests:
+          - not_null
+
+      - name: quarter
+        description: Calendar quarter from 1 to 4.
+        data_tests:
+          - not_null
+
+      - name: day_of_week_number
+        description: ISO weekday number, Monday 1 through Sunday 7.
+        data_tests:
+          - not_null
