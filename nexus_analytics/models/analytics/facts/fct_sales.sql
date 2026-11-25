@@ -11,13 +11,32 @@ WITH staging_sales AS (
     FROM {{ ref('stg_sales_orders') }}
 
 ),
+sales_with_dimensions AS (
+
+    SELECT
+        sales.*,
+
+        customer.customer_key,
+        product.product_key
+
+    FROM staging_sales AS sales
+
+    LEFT JOIN {{ ref('dim_customer') }} AS customer
+        ON sales.customer_id = customer.customer_id
+
+    LEFT JOIN {{ ref('dim_product') }} AS product
+        ON sales.product_id = product.product_id
+
+),
 
 sales_measures AS (
 
     SELECT
         order_id,
         customer_id,
+        customer_key,
         product_id,
+        product_key,
         sales_rep_id,
         order_date,
 	    TO_NUMBER(TO_CHAR(order_date, 'YYYYMMDD')) AS order_date_key,
@@ -56,7 +75,7 @@ sales_measures AS (
             ELSE 0
         END AS cancelled_order_value
 
-    FROM staging_sales
+    FROM sales_with_dimensions
 
 )
 

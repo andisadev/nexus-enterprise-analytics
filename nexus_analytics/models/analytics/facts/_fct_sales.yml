@@ -70,3 +70,21 @@ models:
         description: Net order value for completed orders; zero otherwise.
         data_tests:
           - not_null
+          
+      - name: customer_key
+        description: Foreign key to the customer dimension.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
+
+      - name: product_key
+        description: Foreign key to the product dimension.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: product_key

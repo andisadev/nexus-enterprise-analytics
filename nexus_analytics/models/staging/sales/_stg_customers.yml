@@ -1,0 +1,54 @@
+
+version: 2
+
+models:
+  - name: stg_customers
+    description: >
+      Standardized customer master data.
+      One row per customer.
+
+    columns:
+      - name: customer_id
+        description: Unique customer identifier.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        data_tests:
+          - not_null
+
+      - name: last_name
+        data_tests:
+          - not_null
+
+      - name: email
+        data_tests:
+          - not_null
+
+      - name: customer_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Individual', 'Business']
+
+      - name: customer_segment
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Enterprise', 'Mid-Market', 'Small Business']
+
+      - name: region
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Northeast', 'Southeast', 'Midwest', 'Southwest', 'West']
+
+      - name: customer_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Active', 'Inactive']
+
+

@@ -1,0 +1,41 @@
+
+version: 2
+
+models:
+  - name: stg_products
+    description: >
+      Standardized product master data.
+      One row per product.
+
+    columns:
+      - name: product_id
+        description: Unique product identifier.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        data_tests:
+          - not_null
+
+      - name: category
+        data_tests:
+          - not_null
+
+      - name: subcategory
+        data_tests:
+          - not_null
+
+      - name: list_price
+        data_tests:
+          - not_null
+
+      - name: standard_cost
+        data_tests:
+          - not_null
+
+      - name: product_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Active', 'Inactive']

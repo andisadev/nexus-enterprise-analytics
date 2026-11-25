@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: >
+      Customer dimension containing descriptive attributes
+      for customer analysis. One row per customer.
+
+    columns:
+      - name: customer_key
+        description: Warehouse surrogate key.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: Original customer business identifier.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Individual', 'Business']
+
+      - name: customer_segment
+        data_tests:
+          - not_null
+
+      - name: region
+        data_tests:
+          - not_null
+
+      - name: signup_date
+        data_tests:
+          - not_null

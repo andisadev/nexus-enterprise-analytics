@@ -13,3 +13,15 @@ sources:
         columns:
           - name: ORDER_ID
             description: "Unique sales order identifier"
+
+      - name: customers
+        description: "Customer master records"
+        columns:
+          - name: CUSTOMER_ID
+            description: "Unique customer identifier"
+
+      - name: products
+        description: "Product master records"
+        columns:
+          - name: PRODUCT_ID
+            description: "Unique product identifier"
